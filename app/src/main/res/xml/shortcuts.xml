@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <shortcut
+        android:shortcutId="feedback"
+        android:enabled="true"
+        android:icon="@mipmap/feedback_icon"
+        android:shortcutShortLabel="@string/feedback_short">
+
+        <intent
+            android:action="android.Intent.action.view"
+            android:targetPackage="com.iknoortech.mitshubishidemo"
+            android:targetClass="com.iknoortech.mitshubishidemo.activity.feedback.FeedbackActivity"/>
+
+        <categories android:name="android.shortcut.conversation"/>
+
+    </shortcut>
+
+    <shortcut
+        android:shortcutId="survey"
+        android:enabled="true"
+        android:icon="@mipmap/survey_icon"
+        android:shortcutShortLabel="@string/survey_short">
+
+        <intent
+            android:action="android.Intent.action.view"
+            android:targetPackage="com.iknoortech.mitshubishidemo"
+            android:targetClass="com.iknoortech.mitshubishidemo.activity.SurvayActivity"/>
+
+        <categories android:name="android.shortcut.conversation"/>
+
+    </shortcut>
+
+    <shortcut
+        android:shortcutId="policy"
+        android:enabled="true"
+        android:icon="@mipmap/policy_icon"
+        android:shortcutShortLabel="@string/privacy_short">
+
+        <intent
+            android:action="android.Intent.action.view"
+            android:targetPackage="com.iknoortech.mitshubishidemo"
+            android:targetClass="com.iknoortech.mitshubishidemo.activity.PrivacyActivity"/>
+
+        <categories android:name="android.shortcut.conversation"/>
+
+    </shortcut>
+
+</Shortcuts>

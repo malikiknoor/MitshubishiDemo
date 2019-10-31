@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="3dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/notification_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:background="@drawable/message_sent_background"
+        android:padding="8dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_message_by"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="YOU:"
+                android:textColor="@color/fontColor"
+                android:textStyle="bold"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/tv_message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="RepublicRepublicRepublicRepublicRepublic"
+                android:textColor="@color/fontColor"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tv_date_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_gravity="end"
+                android:text="2018-10-25 11:00AM"
+                android:textColor="@color/darkGray"
+                android:textSize="10sp"
+                android:layout_alignParentRight="true" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

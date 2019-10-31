@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "190216938346",
+    "firebase_url": "https://mitsubishi-demo-9d906.firebaseio.com",
+    "project_id": "mitsubishi-demo-9d906",
+    "storage_bucket": "mitsubishi-demo-9d906.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:190216938346:android:faa81c488f853201493b13",
+        "android_client_info": {
+          "package_name": "com.iknoortech.mitshubishidemo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "190216938346-hbr0331qm25fbplv8e6na03cmb06fbg6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.iknoortech.mitshubishidemo",
+            "certificate_hash": "7320bcff652b7214b1d0b569fb1905146b8feda2"
+          }
+        },
+        {
+          "client_id": "190216938346-dl37uq7nha2272r22hdea19drfoi74iv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAk17sqn7FCNaIM9JJY4cPPjWKD29L6338"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "190216938346-dl37uq7nha2272r22hdea19drfoi74iv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

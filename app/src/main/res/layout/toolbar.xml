@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="?actionBarSize"
+    android:elevation="6dp"
+    android:id="@+id/toolbar">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imgBack"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_centerVertical="true"
+            android:background="@drawable/ic_left_black_24dp"/>
+
+        <ImageView
+            android:layout_width="120dp"
+            android:layout_height="44dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/ic_mitsubishi_electric_logo"/>
+
+    </RelativeLayout>
+
+</androidx.appcompat.widget.Toolbar>
