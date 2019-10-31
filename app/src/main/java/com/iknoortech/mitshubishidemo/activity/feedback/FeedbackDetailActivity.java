@@ -82,6 +82,13 @@ public class FeedbackDetailActivity extends AppCompatActivity {
 
         defeedbackId = getIntent().getStringExtra("FeedbackId");
 
+        if (getIntent().getExtras() != null) {
+            for (String key : getIntent().getExtras().keySet()) {
+                defeedbackId = getIntent().getExtras().getString("body");
+                Log.d(TAG, "Key: " + key + " Value: " + defeedbackId);
+            }
+        }
+
         edMessage = findViewById(R.id.ed_message);
         btn_sendMessage = findViewById(R.id.btn_sendMessage);
 
