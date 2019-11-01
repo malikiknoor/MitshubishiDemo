@@ -11,6 +11,7 @@ import android.net.Uri;
 import android.os.Build;
 
 import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
@@ -57,13 +58,12 @@ public class MyFirebaseMessaging extends FirebaseMessagingService {
         PendingIntent pendingIntent = PendingIntent.getActivity(this, new Random().nextInt(), intent, PendingIntent.FLAG_ONE_SHOT);
 
         Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-        NotificationManager mNotifyManager = (NotificationManager) getSystemService(this.NOTIFICATION_SERVICE);
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
             NotificationChannel mChannel = new NotificationChannel("channel-01", "Mitsubishi",
                     IMPORTANCE_DEFAULT);
             mChannel.setDescription(description);
-
-            mNotifyManager.createNotificationChannel(mChannel);
+            NotificationManager manager = getSystemService(NotificationManager.class);
+            manager.createNotificationChannel(mChannel);
         }
 
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this, "channel-01");
@@ -76,6 +76,7 @@ public class MyFirebaseMessaging extends FirebaseMessagingService {
                 .setSound(defaultSoundUri)
                 .setContentIntent(pendingIntent);
 
+        NotificationManagerCompat mNotifyManager = NotificationManagerCompat.from(this);
         mNotifyManager.notify(new Random().nextInt(), mBuilder.build());
 
     }

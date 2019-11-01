@@ -37,7 +37,10 @@ import com.iknoortech.mitshubishidemo.utils.Utils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import retrofit2.Call;
@@ -149,6 +152,7 @@ public class FeedbackDetailActivity extends AppCompatActivity {
             }
         });
     }
+
     @SuppressLint("NewApi")
     private void setFeedbackData(final FeedbackListData feedbackData, final String imageBaseURL) {
         feedbackId = feedbackData.getId();
@@ -280,7 +284,10 @@ public class FeedbackDetailActivity extends AppCompatActivity {
                         Toast.makeText(FeedbackDetailActivity.this, "Message send successfully", Toast.LENGTH_SHORT).show();
                         FeedbackListReply message = new FeedbackListReply();
                         message.setReplyText(messageText);
-                        message.setAddeddate("2018-10-29 14:20");
+                        Date c = Calendar.getInstance().getTime();
+                        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                        String formattedDate = df.format(c);
+                        message.setAddeddate(formattedDate);
                         message.setReplyFrom(userId);
                         feedbackReply.add(message);
 
