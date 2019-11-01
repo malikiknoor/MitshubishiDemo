@@ -19,6 +19,7 @@
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning"
         tools:targetApi="m">
+        <activity android:name=".activity.ImageViewActivity"></activity>
         <activity
             android:name=".activity.PdfViewActivity"
             android:screenOrientation="portrait" />
@@ -33,6 +34,7 @@
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="FEEDBACK" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -55,13 +57,14 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
             <meta-data
                 android:name="android.app.shortcuts"
                 android:resource="@xml/shortcuts" />
         </activity>
         <activity
             android:name=".activity.MainActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -73,13 +76,15 @@
                 android:resource="@xml/filepaths" />
         </provider>
 
-        <service
-            android:name=".notification.MyFirebaseMessaging">
+        <service android:name=".notification.MyFirebaseMessaging">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
 
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_channel_id"
+            android:value="@string/default_notification_channel_id" />
     </application>
 
 </manifest>

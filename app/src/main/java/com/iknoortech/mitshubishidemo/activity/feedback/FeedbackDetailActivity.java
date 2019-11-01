@@ -6,10 +6,14 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.app.ActivityOptions;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.Pair;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,6 +24,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.iknoortech.mitshubishidemo.R;
+import com.iknoortech.mitshubishidemo.activity.ImageViewActivity;
 import com.iknoortech.mitshubishidemo.adapter.MessageAdapter;
 import com.iknoortech.mitshubishidemo.connection.ApiInterface;
 import com.iknoortech.mitshubishidemo.connection.BaseUrl;
@@ -80,13 +85,17 @@ public class FeedbackDetailActivity extends AppCompatActivity {
         ivLocation4 = findViewById(R.id.iv_location_image_4);
         ll_fb_send = findViewById(R.id.ll_fb_send);
 
-        defeedbackId = getIntent().getStringExtra("FeedbackId");
+        if (getIntent().getStringExtra("FeedbackId") != null) {
+            defeedbackId = getIntent().getStringExtra("FeedbackId");
+        } else {
+            defeedbackId = getIntent().getExtras().getString("body");
 
-        if (getIntent().getExtras() != null) {
-            for (String key : getIntent().getExtras().keySet()) {
-                defeedbackId = getIntent().getExtras().getString("body");
-                Log.d(TAG, "Key: " + key + " Value: " + defeedbackId);
-            }
+//            if (getIntent().getExtras() != null) {
+//                for (String key : getIntent().getExtras().keySet()) {
+//                    defeedbackId = getIntent().getExtras().getString("body");
+//                    Log.d(TAG, "Key: " + key + " Value: " + defeedbackId);
+//                }
+//            }
         }
 
         edMessage = findViewById(R.id.ed_message);
@@ -113,7 +122,7 @@ public class FeedbackDetailActivity extends AppCompatActivity {
 
     private void getFeedbackData() {
         pd.show();
-        Log.d(TAG, "getFeedbackData: "+defeedbackId);
+        Log.d(TAG, "getFeedbackData: " + defeedbackId);
         ApiInterface apiInterface = BaseUrl.getRetrofitInstance().create(ApiInterface.class);
         apiInterface.getFeedbackDetail(defeedbackId).enqueue(new Callback<FeedbackListPojo>() {
             @Override
@@ -145,8 +154,8 @@ public class FeedbackDetailActivity extends AppCompatActivity {
             }
         });
     }
-
-    private void setFeedbackData(FeedbackListData feedbackData, String imageBaseURL) {
+    @SuppressLint("NewApi")
+    private void setFeedbackData(final FeedbackListData feedbackData, final String imageBaseURL) {
         feedbackId = feedbackData.getId();
         feedbackReply.addAll(feedbackData.getReply());
 
@@ -163,6 +172,62 @@ public class FeedbackDetailActivity extends AppCompatActivity {
                 .load(imageBaseURL + feedbackData.getImageThree()).into(ivLocation3);
         Glide.with(getApplicationContext())
                 .load(imageBaseURL + feedbackData.getImageFour()).into(ivLocation4);
+
+        ivLocation1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(!feedbackData.getImageOne().isEmpty()){
+                    Intent intent = new Intent(FeedbackDetailActivity.this, ImageViewActivity.class);
+                    intent.putExtra("imageUrl", imageBaseURL + feedbackData.getImageOne());
+                     ActivityOptions options = ActivityOptions.
+                            makeSceneTransitionAnimation((Activity) FeedbackDetailActivity.this,
+                                    Pair.<View, String>create(ivLocation1, "zoomImage"));
+                    startActivity(intent, options.toBundle());
+                }
+            }
+        });
+
+        ivLocation2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(!feedbackData.getImageTwo().isEmpty()){
+                    Intent intent = new Intent(FeedbackDetailActivity.this, ImageViewActivity.class);
+                    intent.putExtra("imageUrl", imageBaseURL + feedbackData.getImageTwo());
+                    ActivityOptions options = ActivityOptions.
+                            makeSceneTransitionAnimation((Activity) FeedbackDetailActivity.this,
+                                    Pair.<View, String>create(ivLocation2, "zoomImage"));
+                    startActivity(intent, options.toBundle());
+                }
+            }
+        });
+
+        ivLocation3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(!feedbackData.getImageThree().isEmpty()){
+                    Intent intent = new Intent(FeedbackDetailActivity.this, ImageViewActivity.class);
+                    intent.putExtra("imageUrl", imageBaseURL + feedbackData.getImageThree());
+                    ActivityOptions options = ActivityOptions.
+                            makeSceneTransitionAnimation((Activity) FeedbackDetailActivity.this,
+                                    Pair.<View, String>create(ivLocation3, "zoomImage"));
+                    startActivity(intent, options.toBundle());
+                }
+            }
+        });
+
+        ivLocation4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(!feedbackData.getImageFour().isEmpty()){
+                    Intent intent = new Intent(FeedbackDetailActivity.this, ImageViewActivity.class);
+                    intent.putExtra("imageUrl", imageBaseURL + feedbackData.getImageFour());
+                    ActivityOptions options = ActivityOptions.
+                            makeSceneTransitionAnimation((Activity) FeedbackDetailActivity.this,
+                                    Pair.<View, String>create(ivLocation4, "zoomImage"));
+                    startActivity(intent, options.toBundle());
+                }
+            }
+        });
 
         if (feedbackReply.size() != 0) {
 //            setAdapter(feedbackReply);
