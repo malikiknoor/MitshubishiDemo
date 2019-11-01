@@ -95,6 +95,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
+                    android:layout_marginTop="8dp"
                     android:onClick="goToFeedback"
                     android:orientation="vertical">
 
@@ -124,6 +125,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
+                    android:layout_marginTop="8dp"
                     android:onClick="goToSurvey"
                     android:orientation="vertical">
 
@@ -153,6 +155,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
+                    android:layout_marginTop="8dp"
                     android:onClick="goToPolicy"
                     android:orientation="vertical">
 

@@ -212,7 +212,7 @@ public class MainActivity extends AppCompatActivity {
     private void getFirebaseToken() {
         FirebaseInstanceId.getInstance().getInstanceId()
                 .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
-                    @SuppressLint("HardwareIds")
+                    @SuppressLint({"HardwareIds", "NewApi"})
                     @Override
                     public void onComplete(@NonNull Task<InstanceIdResult> task) {
                         if (task.isSuccessful()) {

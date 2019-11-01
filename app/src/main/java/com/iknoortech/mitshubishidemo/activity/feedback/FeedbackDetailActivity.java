@@ -52,7 +52,7 @@ public class FeedbackDetailActivity extends AppCompatActivity {
     private Button btn_sendMessage;
     private String feedbackId, userId, defeedbackId;
     private TextView tvReqId, tvSubmitDate, tvCategory, tvDescription, tvNoReply, tv_fbClose;
-    private LinearLayout layoutImage1, layoutImage2, layoutImage3, layoutImage4, ll_fb_send;
+    private LinearLayout ll_fb_send;
     private ImageView ivLocation1, ivLocation2, ivLocation3, ivLocation4;
     private EditText edMessage;
     private ProgressDialog pd;
@@ -73,11 +73,6 @@ public class FeedbackDetailActivity extends AppCompatActivity {
         tvDescription = findViewById(R.id.tv_description);
         tvNoReply = findViewById(R.id.tv_no_reply);
         tv_fbClose = findViewById(R.id.tv_fbClose);
-
-        layoutImage1 = findViewById(R.id.layout_image_1);
-        layoutImage2 = findViewById(R.id.layout_image_2);
-        layoutImage3 = findViewById(R.id.layout_image_3);
-        layoutImage4 = findViewById(R.id.layout_image_4);
 
         ivLocation1 = findViewById(R.id.iv_location_image_1);
         ivLocation2 = findViewById(R.id.iv_location_image_2);
@@ -230,7 +225,6 @@ public class FeedbackDetailActivity extends AppCompatActivity {
         });
 
         if (feedbackReply.size() != 0) {
-//            setAdapter(feedbackReply);
             setAdapterMessage(feedbackReply, userId);
             tvNoReply.setVisibility(View.GONE);
         } else {
@@ -252,17 +246,6 @@ public class FeedbackDetailActivity extends AppCompatActivity {
                 if (!messageText.equals("")) {
                     Utils.closeKeyboard(FeedbackDetailActivity.this);
                     edMessage.setText("");
-
-//                    FeedbackListReply message = new FeedbackListReply();
-//                    message.setReplyText(messageText);
-//                    message.setAddeddate("2018-10-29 14:20");
-//                    message.setReplyFrom(userId);
-//                    feedbackReply.add(message);
-//
-//                    setAdapterMessage(feedbackReply, userId);
-//                    tvNoReply.setVisibility(View.GONE);
-//                    viewDataAdapter.notifyDataSetChanged();
-
                     if (Utils.isConnectionAvailable(getApplicationContext())) {
                         pd.show();
                         serviceSendMessage(feedbackId, messageText, userId);
